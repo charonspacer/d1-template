@@ -48,4 +48,4 @@ export default {
     const { results } = await stmt.all();
 
     return new Response(renderHtml(JSON.stringify(results, null, 2)), {
-      headers: { "content-type": "text/html
+      headers: { "content-type": "text/html"}
