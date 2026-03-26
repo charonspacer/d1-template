@@ -1,16 +1,34 @@
 {
-	"compatibility_date": "2025-10-08",
-	"main": "src/index.ts",
-	"name": "d1-template",
-	"upload_source_maps": true,
-	"d1_databases": [
-		{
-			"binding": "DB",
-			"database_id": "e11d9a07-6060-4900-a02a-c944a03eb1e8",
-			"database_name": "d1-template-database"
-		}
-	],
-	"observability": {
-		"enabled": true
-	}
+  "compatibility_date": "2025-10-08",
+  "main": "src/index.ts",
+  "name": "d1-template",
+  "upload_source_maps": true,
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_id": "e11d9a07-6060-4900-a02a-c944a03eb1e8",
+      "database_name": "d1-template-database"
+    }
+  ],
+
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "AGENT_CORE",
+        "class_name": "AgentCore"
+      }
+    ]
+  },
+
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_classes": ["AgentCore"]
+    }
+  ],
+
+  "observability": {
+    "enabled": true
+  }
 }
