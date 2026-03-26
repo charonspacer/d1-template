@@ -12,7 +12,6 @@ export class AgentCore {
   async fetch(request: Request): Promise<Response> {
     const url = new URL(request.url);
 
-    // Read agent memory
     if (url.pathname === "/state") {
       const memory = await this.state.storage.get("memory") || {};
       return new Response(JSON.stringify(memory), {
@@ -21,7 +20,6 @@ export class AgentCore {
       });
     }
 
-    // Update agent memory
     if (url.pathname === "/update") {
       const body = await request.json();
       await this.state.storage.put("memory", body);
@@ -48,4 +46,7 @@ export default {
     const { results } = await stmt.all();
 
     return new Response(renderHtml(JSON.stringify(results, null, 2)), {
-      headers: { "content-type": "text/html"}
+      headers: { "content-type": "text/html" }
+    });
+  }
+} satisfies ExportedHandler<Env>;
